@@ -49,11 +49,25 @@ include 'dbconnect.php';
 					 	<td><?php echo $item['id']; ?></td>
 					 	<td><?php echo $item['name']; ?></td>
 					 	<td><?php echo $item['codeno']; ?></td>
-					 	<td><?php echo $item['price']; ?></td>
+					 	<td><?php 
+					 	        if($item['discount']){
+					 	        	echo $item['discount']." MMK";
+					 	        	?>
+					 	        	<del><?php echo $item['price']." MMK"; ?></del>
+					 	        	<?php 
+					 	        	 }else{
+					 	        	 	echo $item['price']." MMK";
+					 	        	 }
+
+					 	        	 ?>
+					 	       
+
+
+					 	 </td>
 					 	<td>
-					 		<a href="#" class="btn btn-outline-primary btn-sm">Detail</a>
+					 		<a href="item_detail.php?id=<?php echo $item['id'];?>" class="btn btn-outline-primary btn-sm" >Detail</a>
 					 		<a href="#" class="btn btn-outline-warning btn-sm">Edit</a>
-					 		<a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+					 		<a href="item_delete.php?id=<?php echo $item['id'];?>" class="btn btn-outline-danger btn-sm">Delete</a>
 					 	</td>
 					 </tr>
 					<?php } ?>
